@@ -22,5 +22,5 @@ RUN apt-get update -qq && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Install application gems
-COPY Gemfile .
+COPY Gemfile Gemfile.lock .
 RUN bundle install
