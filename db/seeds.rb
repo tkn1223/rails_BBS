@@ -7,3 +7,9 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+if Rails.env == 'development'
+    (1..50).each do |i|
+        Board.create(author_name: "ユーザー#{i}", title: "タイトル#{i}", body: "本文#{i}")
+    end
+end

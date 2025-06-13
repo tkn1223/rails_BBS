@@ -1,40 +1,37 @@
 class BoardsController < ApplicationController
+
+    before_action :set_target_board, only: %i[show edit update destroy]
+
     # 掲示板一覧ページ
     def index
-        @boards = Board.all
+        @boards = Board.page(params[:page])
     end
 
     # 作成ページ
     def new
         @board = Board.new
-        # binding.pry
     end
 
     def create
-        board = Board.create(board_params)
-        # binding.pry
-        redirect_to board
+        @board = Board.create(board_params)
+
+        redirect_to @board
     end
     
     def show
-        @board = Board.find(params[:id])
-        # binding.pry
     end
 
     def edit
-        @board = Board.find(params[:id])
     end
 
     def update
-        board = Board.find(params[:id])
-        board.update(board_params)
+        @board.update(board_params)
 
-        redirect_to board
+        redirect_to @board
     end
 
     def destroy
-        board = Board.find(params[:id])
-        board.destroy
+        @board.destroy
 
         redirect_to boards_path
     end
@@ -44,4 +41,9 @@ class BoardsController < ApplicationController
     def board_params
         params.require(:board).permit(:author_name, :title, :body)
     end
+
+    def set_target_board
+        @board = Board.find(params[:id])
+    end
+
 end
