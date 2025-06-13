@@ -1,6 +1,9 @@
 // Configure your import map in config/importmap.rb. Read more: https://github.com/rails/importmap-rails
 import "popper"
 import "bootstrap"
+// rails7でjsを使うための準備
+import "@hotwired/turbo-rails"
+import "controllers"
 
 // 初期化コード
 window.onload = function () {
