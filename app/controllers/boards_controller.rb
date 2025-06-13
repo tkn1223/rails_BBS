@@ -1,6 +1,7 @@
 class BoardsController < ApplicationController
     # 掲示板一覧ページ
     def index
+        @boards = Board.all
     end
 
     # 作成ページ
@@ -11,7 +12,12 @@ class BoardsController < ApplicationController
 
     def create
         Board.create(board_params)
-        binding.pry
+        # binding.pry
+    end
+    
+    def show
+        @board = Board.find(params[:id])
+        # binding.pry
     end
 
     private

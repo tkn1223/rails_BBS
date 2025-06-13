@@ -3,7 +3,7 @@
 <div class="d-flex align-items-center">
   <h1>掲示板一覧</h1>
   <div class="ms-auto boards__linkBox">
-    <a href="/boards/new" class="btn btn-outline-dark">新規作成</a>
+    <%= link_to '新規作成', new_board_path, class: 'btn btn-outline-dark' %>
   </div>
 </div>
 <table class="table table-hover boards__table">
@@ -14,23 +14,20 @@
       <th>作成者</td>
       <th>作成日時</td>
       <th>更新日時</td>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <th>1</th>
-      <td>雑談掲示板</td>
-      <td>Taro</td>
-      <td>2018年4月1日</td>
-      <td>2018年4月15日</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>雑談掲示板2</td>
-      <td>Ken</td>
-      <td>2018年4月1日</td>
-      <td>2018年4月15日</td>
-    </tr>
+    <% @boards.each do |board| %>
+      <tr>
+        <td><%= board.id %></td>
+        <td><%= board.title %></td>
+        <td><%= board.author_name %></td>
+        <td><%= board.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+        <td><%= board.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+        <td><%= link_to '詳細', board, class: 'btn btn-outline-dark' %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 
