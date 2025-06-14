@@ -40,6 +40,7 @@ gem "bootstrap", "5.3.1"
 gem "sassc-rails", "2.1.2"
 gem "mini_racer", "0.8.0"
 gem "kaminari"
+gem "rails-i18n"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -56,5 +57,6 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
   gem "pry-byebug"
+  gem "annotate"
 end
 
